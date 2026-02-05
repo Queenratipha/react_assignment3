@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import BackgroundCarousel from './BackgroundCarousel';
 
 const SignUp = () => {
   const [name, setName] = useState('');
@@ -16,8 +17,9 @@ const SignUp = () => {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card signup-card">
+    <BackgroundCarousel>
+      <div className="auth-page">
+        <div className="auth-card signup-card">
         <h2>Create account</h2>
         <p className="muted">Join React Js Assignment No 3 — just a quick signup.</p>
         <form onSubmit={handleSubmit}>
@@ -56,7 +58,8 @@ const SignUp = () => {
 
         <p className="auth-hint">Already have an account? <Link to="/login">Login</Link></p>
       </div>
-    </div>
+      </div>
+    </BackgroundCarousel>
   );
 };
 

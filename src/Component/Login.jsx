@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import BackgroundCarousel from './BackgroundCarousel';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -32,8 +33,9 @@ const Login = () => {
   };
 
   return (
-    <div className="auth-page">
-      <div className="auth-card login-card">
+    <BackgroundCarousel>
+      <div className="auth-page">
+        <div className="auth-card login-card">
         <h2>Welcome back</h2>
         <p className="muted">Please sign in to continue to React Js Assignment No 3</p>
         <form onSubmit={handleSubmit}>
@@ -63,7 +65,8 @@ const Login = () => {
 
         <p className="auth-hint">Don't have an account? <Link to="/signup">Create an account</Link></p>
       </div>
-    </div>
+      </div>
+    </BackgroundCarousel>
   );
 };
 
