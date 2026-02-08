@@ -9,8 +9,8 @@ function Dashboard() {
           <p>120</p>
         </div>
         <div className="card">
-          <h2>Sales</h2>
-          <p>$3,450</p>
+          <h2>📷 Number of Images</h2>
+          <p>3,450</p>
         </div>
         <div className="card">
           <h2>Orders</h2>

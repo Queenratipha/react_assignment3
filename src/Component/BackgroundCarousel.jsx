@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
+// Array of MORE INTERACTIVE & ATTRACTIVE background images
+const backgroundImages = [
+  'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=80', // Mountain peak
+  'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&h=900&fit=crop&q=80', // Ocean waves
+  'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1600&h=900&fit=crop&q=80', // Aurora borealis
+  'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600&h=900&fit=crop&q=80', // Neon city
+  'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=1600&h=900&fit=crop&q=80', // Digital art
+  'https://images.unsplash.com/photo-1462332420958-a05d1e7413413?w=1600&h=900&fit=crop&q=80', // Purple galaxy
+  'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1600&h=900&fit=crop&q=80', // Blue tech
+];
+
 const BackgroundCarousel = ({ children }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Array of MORE INTERACTIVE & ATTRACTIVE background images
-  const backgroundImages = [
-    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&h=900&fit=crop&q=80', // Mountain peak
-    'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&h=900&fit=crop&q=80', // Ocean waves
-    'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1600&h=900&fit=crop&q=80', // Aurora borealis
-    'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600&h=900&fit=crop&q=80', // Neon city
-    'https://images.unsplash.com/photo-1536376072261-38c75010e6c9?w=1600&h=900&fit=crop&q=80', // Digital art
-    'https://images.unsplash.com/photo-1462332420958-a05d1e7413413?w=1600&h=900&fit=crop&q=80', // Purple galaxy
-    'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=1600&h=900&fit=crop&q=80', // Blue tech
-  ];
 
   // Change image every 6 seconds for more dynamic feel
   useEffect(() => {

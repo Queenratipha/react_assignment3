@@ -1,30 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
 
 const Dashboard = () => {
-  const [view, setView] = useState('overview');
+  const view = 'overview';
   const [cardsAnimate, setCardsAnimate] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [showWelcome, setShowWelcome] = useState(!localStorage.getItem('seenWelcome'));
-  const navigate = useNavigate();
 
-  const menuItems = [
-    { key: 'overview', label: 'Overview' },
-    { key: 'profile', label: 'Profile' },
-    { key: 'settings', label: 'Settings' },
-    { key: 'analytics', label: 'Analytics' },
-  ];
-
-  const handleMenuClick = (key) => {
-    setView(key);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('user');
-    localStorage.removeItem('seenWelcome');
-    navigate('/login');
-  };
 
   useEffect(() => {
     const t = setTimeout(() => setCardsAnimate(true), 120);
@@ -74,8 +56,8 @@ const Dashboard = () => {
             <p>1,234</p>
           </div>
           <div className="card">
-            <h3>💰 Revenue</h3>
-            <p>$45,678</p>
+            <h3>📷 Number of Images</h3>
+            <p>1</p>
           </div>
           <div className="card">
             <h3>📦 Orders</h3>

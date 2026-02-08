@@ -3,7 +3,12 @@ import { useNavigate, Link } from 'react-router-dom';
 import BackgroundCarousel from './BackgroundCarousel';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState(() => {
+    const temp = localStorage.getItem('user_temp');
+    if (!temp) return '';
+    const parsed = JSON.parse(temp);
+    return parsed?.email || '';
+  });
   const [password, setPassword] = useState('');
   const emailRef = useRef(null);
   const navigate = useNavigate();
@@ -12,13 +17,6 @@ const Login = () => {
     // If already logged in, go to dashboard
     const existing = localStorage.getItem('user');
     if (existing) navigate('/dashboard');
-
-    // Pre-fill email when coming from signup
-    const temp = localStorage.getItem('user_temp');
-    if (temp) {
-      const parsed = JSON.parse(temp);
-      if (parsed?.email) setEmail(parsed.email);
-    }
 
     // Focus the email field
     emailRef.current?.focus();
