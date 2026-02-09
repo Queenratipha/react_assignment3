@@ -18,7 +18,7 @@ function App() {
       <div className="app-container">
         <Routes>
           <Route path="/" element={<HomeRedirect />} />
-          <Route path="/landing" element={<LandingPage />} />
+          <Route path="/landing" element={<ProtectedRoute><LandingPage /></ProtectedRoute>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />

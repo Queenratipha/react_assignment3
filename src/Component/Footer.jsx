@@ -3,8 +3,10 @@ import { useLocation } from 'react-router-dom';
 
 function Footer(){
     const location = useLocation();
-    // Hide footer on auth pages where we want a focused login/signup experience
-    if (location.pathname === '/login' || location.pathname === '/signup') return null;
+    const user = localStorage.getItem('user');
+
+    // Hide footer on auth pages or if not logged in to focus on login experience
+    if (location.pathname === '/login' || location.pathname === '/signup' || !user) return null;
 
     return(
         <div className="Footer">

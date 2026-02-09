@@ -3,8 +3,10 @@ import { useLocation } from 'react-router-dom';
 
 function Header() {
   const location = useLocation();
+  const user = localStorage.getItem('user');
 
-  if (location.pathname === '/login' || location.pathname === '/signup') {
+  // Hide header on auth pages or if not logged in
+  if (location.pathname === '/login' || location.pathname === '/signup' || !user) {
     return null;
   }
 

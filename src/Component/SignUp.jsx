@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import BackgroundCarousel from './BackgroundCarousel';
 
@@ -7,6 +7,12 @@ const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // If already logged in, go to dashboard
+    const existing = localStorage.getItem('user');
+    if (existing) navigate('/dashboard');
+  }, [navigate]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
