@@ -25,6 +25,10 @@ html, body, #root {
   overflow-x: hidden;
 }
 
+body.nav-lock {
+  overflow: hidden;
+}
+
 /* ============================================
    GLOBAL STYLES & ANIMATIONS
    ============================================ */
@@ -327,6 +331,25 @@ html, body, #root {
   padding-bottom: 100px;
 }
 
+body.nav-open .background-content {
+  transform: translateX(280px);
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+body.nav-open .dashboard-header,
+body.nav-open .content-area {
+  transform: translateX(280px);
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+body.nav-open .Footer {
+  transform: translateX(280px);
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
 /* ============================================
    NAVBAR / HEADER STYLES
    ============================================ */
@@ -404,20 +427,21 @@ header h1 {
 /* Sidebar Navigation */
 .sidebar-nav {
   position: fixed;
-  left: -300px;
+  left: 0;
   top: 0;
   width: 280px;
   height: 100vh;
   background: linear-gradient(180deg, #1a1a2e 0%, #0f0f23 100%);
   border-right: 1px solid rgba(102, 126, 234, 0.2);
   z-index: 150;
-  transition: left 0.4s ease;
+  transition: transform 0.4s ease;
   overflow-y: auto;
   box-shadow: 8px 0 32px rgba(0, 0, 0, 0.5);
+  transform: translateX(-100%);
 }
 
 .sidebar-nav.open {
-  left: 0;
+  transform: translateX(0);
 }
 
 .nav-header {
@@ -451,6 +475,10 @@ header h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.nav-header .close-btn {
+  display: flex;
 }
 
 .close-btn:hover {
@@ -1158,6 +1186,17 @@ button[type="submit"]:active {
 
   .cards-row {
     grid-template-columns: 1fr;
+  }
+
+  .sidebar-nav.open {
+    transform: translateX(0);
+  }
+
+  body.nav-open .background-content,
+  body.nav-open .dashboard-header,
+  body.nav-open .content-area,
+  body.nav-open .Footer {
+    transform: none;
   }
 }
 

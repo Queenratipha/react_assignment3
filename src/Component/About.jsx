@@ -39,7 +39,7 @@ export default function About() {
               color: 'var(--accent-color)',
               marginRight: '1rem',
               fontSize: '1.3rem'
-            }}>✓</span>
+            }}>OK</span>
             Smooth animations and transitions
           </li>
           <li style={{ 
@@ -52,7 +52,7 @@ export default function About() {
               color: 'var(--accent-color)',
               marginRight: '1rem',
               fontSize: '1.3rem'
-            }}>✓</span>
+            }}>OK</span>
             Animated gradient backgrounds
           </li>
           <li style={{ 
@@ -65,7 +65,7 @@ export default function About() {
               color: 'var(--accent-color)',
               marginRight: '1rem',
               fontSize: '1.3rem'
-            }}>✓</span>
+            }}>OK</span>
             Protected authentication system
           </li>
           <li style={{ 
@@ -77,7 +77,7 @@ export default function About() {
               color: 'var(--accent-color)',
               marginRight: '1rem',
               fontSize: '1.3rem'
-            }}>✓</span>
+            }}>OK</span>
             Responsive design for all devices
           </li>
         </ul>

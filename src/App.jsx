@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from './Component/Header.jsx'
+import NavBar from './Component/NavBar.jsx'
 import Footer from './Component/Footer.jsx'
 import Login from './Component/Login.jsx'
 import SignUp from './Component/SignUp.jsx'
@@ -15,6 +16,7 @@ function App() {
   return (
     <Router>
       <Header />
+      <NavBar />
       <div className="app-container">
         <Routes>
           <Route path="/" element={<HomeRedirect />} />

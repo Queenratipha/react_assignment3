@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import NavBar from './NavBar';
-
 const Dashboard = () => {
   const view = 'overview';
   const [cardsAnimate, setCardsAnimate] = useState(false);
@@ -28,8 +26,6 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-layout">
-      <NavBar />
-      
       {/* Dashboard Header */}
       <header className={`dashboard-header ${isSticky ? 'sticky' : ''}`}>
         <div className="header-content">
@@ -42,7 +38,7 @@ const Dashboard = () => {
         {showWelcome && (
           <div className="welcome-banner">
             <div>
-              <strong>🎉 Welcome back!</strong> Glad to see you again. Enjoy exploring your dashboard with beautiful animations.
+              <strong>Welcome back!</strong> Glad to see you again. Enjoy exploring your dashboard with beautiful animations.
             </div>
             <button className="dismiss" onClick={dismissWelcome}>Got it</button>
           </div>
@@ -52,15 +48,15 @@ const Dashboard = () => {
 
         <section className={`cards-row top ${cardsAnimate ? 'animate' : ''}`}>
           <div className="card">
-            <h3>📊 Users</h3>
+            <h3>Users</h3>
             <p>1,234</p>
           </div>
           <div className="card">
-            <h3>📷 Number of Images</h3>
+            <h3>Number of Images</h3>
             <p>1</p>
           </div>
           <div className="card">
-            <h3>📦 Orders</h3>
+            <h3>Orders</h3>
             <p>567</p>
           </div>
         </section>
@@ -68,7 +64,7 @@ const Dashboard = () => {
         <section className="view-panel">
           {view === 'overview' && (
             <div>
-              <h2>📈 Overview</h2>
+              <h2>Overview</h2>
               <p style={{ marginBottom: '1.5rem' }}>
                 Welcome to your professional dashboard! This is your central hub for monitoring key metrics and managing your account.
               </p>
@@ -105,7 +101,7 @@ const Dashboard = () => {
           )}
           {view === 'profile' && (
             <div>
-              <h2>👤 Profile</h2>
+              <h2>Profile</h2>
               <div style={{ marginTop: '2rem' }}>
                 <div style={{ marginBottom: '2rem' }}>
                   <label style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Email Address</label>
@@ -121,7 +117,7 @@ const Dashboard = () => {
                     marginTop: '0.5rem',
                     color: '#10b981'
                   }}>
-                    ✓ Active
+                    Active
                   </p>
                 </div>
                 <div style={{ marginBottom: '2rem' }}>
@@ -147,7 +143,7 @@ const Dashboard = () => {
           )}
           {view === 'settings' && (
             <div>
-              <h2>⚙️ Settings</h2>
+              <h2>Settings</h2>
               <div style={{ marginTop: '2rem' }}>
                 <div style={{
                   padding: '1.5rem',
@@ -198,7 +194,7 @@ const Dashboard = () => {
           )}
           {view === 'analytics' && (
             <div>
-              <h2>📊 Analytics</h2>
+              <h2>Analytics</h2>
               <p style={{ marginBottom: '2rem' }}>
                 Track your dashboard usage and performance metrics.
               </p>

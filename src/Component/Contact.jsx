@@ -44,7 +44,7 @@ export default function Contact() {
             border: '1px solid rgba(255, 255, 255, 0.1)',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📧</div>
+            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>Email</div>
             <h3 style={{ marginBottom: '0.5rem' }}>Email</h3>
             <a href="mailto:irakozeratipha@gmail.com" style={{
               color: 'var(--accent-color)',
@@ -62,7 +62,7 @@ export default function Contact() {
             border: '1px solid rgba(255, 255, 255, 0.1)',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🌐</div>
+            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>Web</div>
             <h3 style={{ marginBottom: '0.5rem' }}>Portfolio</h3>
             <a href="https://queenlatifa-portfolio.netlify.app" target="_blank" rel="noopener noreferrer" style={{
               color: 'var(--accent-color)',
@@ -80,7 +80,7 @@ export default function Contact() {
             border: '1px solid rgba(255, 255, 255, 0.1)',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>💬</div>
+            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>Chat</div>
             <h3 style={{ marginBottom: '0.5rem' }}>Quick Response</h3>
             <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
               Response within 24 hours

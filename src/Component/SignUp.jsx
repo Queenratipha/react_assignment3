@@ -2,24 +2,46 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import BackgroundCarousel from './BackgroundCarousel';
 
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
+
 const SignUp = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    // If already logged in, go to dashboard
     const existing = localStorage.getItem('user');
     if (existing) navigate('/dashboard');
   }, [navigate]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // simple mock signup: save user and redirect to login
-    localStorage.setItem('user_temp', JSON.stringify({ name, email }));
-    // after sign up we send user to login to authenticate
-    navigate('/login');
+    setError('');
+    setLoading(true);
+
+    try {
+      const res = await fetch(`${API_BASE}/api/users/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data?.error || 'Registration failed');
+        return;
+      }
+
+      localStorage.setItem('user_temp', JSON.stringify({ email }));
+      navigate('/login');
+    } catch (err) {
+      setError('Server error. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -27,7 +49,10 @@ const SignUp = () => {
       <div className="auth-page">
         <div className="auth-card signup-card">
         <h2>Create account</h2>
-        <p className="muted">Join React Js Assignment No 3 — just a quick signup.</p>
+        <p className="muted">Join React Js Assignment No 3 - just a quick signup.</p>
+        {error && (
+          <p style={{ color: '#f87171', marginBottom: '1rem', fontWeight: 600 }}>{error}</p>
+        )}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name:</label>
@@ -59,7 +84,9 @@ const SignUp = () => {
               required
             />
           </div>
-          <button type="submit">Sign Up</button>
+          <button type="submit" disabled={loading}>
+            {loading ? 'Creating...' : 'Sign Up'}
+          </button>
         </form>
 
         <p className="auth-hint">Already have an account? <Link to="/login">Login</Link></p>
@@ -69,4 +96,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp; 
+export default SignUp;
