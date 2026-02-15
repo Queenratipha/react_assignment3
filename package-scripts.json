@@ -1,0 +1,16 @@
+{
+  "name": "garden-management-system",
+  "version": "1.0.0",
+  "description": "Full-stack garden management system with React and Express",
+  "scripts": {
+    "install-all": "npm install && cd server && npm install",
+    "dev": "npm run dev --prefix .",
+    "dev:server": "npm run dev --prefix server",
+    "dev:all": "concurrently \"npm run dev:server\" \"npm run dev\"",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["react", "express", "mysql", "garden", "management"],
+  "author": "Queen Latifa",
+  "license": "MIT"
+}

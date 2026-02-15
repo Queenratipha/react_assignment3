@@ -1,5 +1,6 @@
 import mysql from 'mysql2/promise';
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
 
 dotenv.config();
 
@@ -12,6 +13,9 @@ const baseConfig = {
 };
 
 const dbName = process.env.DB_NAME || 'garden';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@garden.com';
+const ADMIN_NAME = process.env.ADMIN_NAME || 'Queen';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'Ant2007#';
 
 let pool;
 
@@ -42,6 +46,7 @@ try {
       name VARCHAR(120) NOT NULL,
       email VARCHAR(190) NOT NULL UNIQUE,
       password_hash VARCHAR(255) NOT NULL,
+      role VARCHAR(20) NOT NULL DEFAULT 'user',
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
   `);
@@ -69,6 +74,16 @@ try {
       CONSTRAINT fk_orders_plant FOREIGN KEY (plant_id) REFERENCES plants(id) ON DELETE RESTRICT
     )
   `);
+
+  const [adminRows] = await pool.query('SELECT id FROM `User` WHERE email = ?', [ADMIN_EMAIL]);
+  if (!adminRows.length) {
+    const password_hash = await bcrypt.hash(ADMIN_PASSWORD, 10);
+    await pool.query(
+      'INSERT INTO `User` (name, email, password_hash, role) VALUES (?, ?, ?, ?)',
+      [ADMIN_NAME, ADMIN_EMAIL, password_hash, 'admin']
+    );
+    console.log(`Seeded admin user: ${ADMIN_EMAIL}`);
+  }
 } catch (err) {
   console.error('Database init failed:', err);
   throw err;

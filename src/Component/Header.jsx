@@ -5,8 +5,8 @@ function Header() {
   const location = useLocation();
   const user = localStorage.getItem('user');
 
-  // Hide header on auth pages or if not logged in
-  if (location.pathname === '/login' || location.pathname === '/signup' || !user) {
+  // Hide header on auth pages, admin pages, or if not logged in
+  if (location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/admin' || location.pathname === '/admin-login' || !user) {
     return null;
   }
 

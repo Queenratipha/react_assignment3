@@ -6,9 +6,10 @@ function NavBar() {
   const navigate = useNavigate();
   const location = useLocation();
   const user = localStorage.getItem('user');
+  const userData = user ? JSON.parse(user) : null;
 
   // Hide nav on auth pages or if not logged in
-  if (location.pathname === '/login' || location.pathname === '/signup' || !user) {
+  if (location.pathname === '/login' || location.pathname === '/admin-login' || location.pathname === '/signup' || location.pathname === '/admin' || !user) {
     return null;
   }
 

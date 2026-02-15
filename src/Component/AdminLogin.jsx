@@ -4,15 +4,9 @@ import BackgroundCarousel from './BackgroundCarousel';
 
 const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000';
 
-const Login = () => {
-  const [email, setEmail] = useState(() => {
-    const temp = localStorage.getItem('user_temp');
-    if (!temp) return '';
-    const parsed = JSON.parse(temp);
-    return parsed?.email || '';
-  });
+const AdminLogin = () => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const emailRef = useRef(null);
@@ -20,7 +14,7 @@ const Login = () => {
 
   useEffect(() => {
     const existing = localStorage.getItem('user');
-    if (existing) navigate('/dashboard');
+    if (existing) navigate('/admin');
     emailRef.current?.focus();
   }, [navigate]);
 
@@ -33,7 +27,7 @@ const Login = () => {
       const res = await fetch(`${API_BASE}/api/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password, role: 'user' })
+        body: JSON.stringify({ email, password, role: 'admin' })
       });
 
       const data = await res.json();
@@ -43,8 +37,7 @@ const Login = () => {
       }
 
       localStorage.setItem('user', JSON.stringify(data));
-      localStorage.removeItem('user_temp');
-      navigate('/dashboard');
+      navigate('/admin');
     } catch (err) {
       setError('Server error. Please try again.');
     } finally {
@@ -56,8 +49,8 @@ const Login = () => {
     <BackgroundCarousel>
       <div className="auth-page">
         <div className="auth-card login-card">
-        <h2>Welcome back</h2>
-        <p className="muted">Please sign in to continue to React Js Assignment No 3</p>
+        <h2>Admin Login</h2>
+        <p className="muted">Sign in with admin credentials</p>
         {error && (
           <p style={{ color: '#f87171', marginBottom: '1rem', fontWeight: 600 }}>{error}</p>
         )}
@@ -83,18 +76,16 @@ const Login = () => {
               required
             />
           </div>
-
           <button type="submit" disabled={loading}>
-            {loading ? 'Signing in...' : 'Login'}
+            {loading ? 'Signing in...' : 'Login as Admin'}
           </button>
         </form>
 
-        <p className="auth-hint">Don't have an account? <Link to="/signup">Create an account</Link></p>
-        <p className="auth-hint">Admin? <Link to="/admin-login">Login here</Link></p>
+
       </div>
       </div>
     </BackgroundCarousel>
   );
 };
 
-export default Login;
+export default AdminLogin;

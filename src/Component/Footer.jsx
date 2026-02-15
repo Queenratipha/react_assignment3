@@ -5,8 +5,8 @@ function Footer(){
     const location = useLocation();
     const user = localStorage.getItem('user');
 
-    // Hide footer on auth pages or if not logged in to focus on login experience
-    if (location.pathname === '/login' || location.pathname === '/signup' || !user) return null;
+    // Hide footer on auth pages, admin pages, or if not logged in
+    if (location.pathname === '/login' || location.pathname === '/signup' || location.pathname === '/admin' || location.pathname === '/admin-login' || !user) return null;
 
     return(
         <div className="Footer">
